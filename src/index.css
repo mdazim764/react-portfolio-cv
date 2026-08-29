@@ -1,0 +1,35 @@
+/* Import our premium fonts */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+@import 'cropperjs/dist/cropper.css';
+
+/* Universal Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Manrope', sans-serif;
+  background-color: #f1f5f9;
+  overflow-x: hidden; /* <--- CHANGED THIS! This unlocks vertical scrolling! */
+}
+
+
+/* 
+  THIS FIXES THE BUG: 
+  Vite puts a max-width and centers text by default. This overrides it! 
+*/
+#root {
+  width: 100vw;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+textarea {
+  font-family: inherit;
+}
