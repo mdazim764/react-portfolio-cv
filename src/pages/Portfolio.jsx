@@ -68,7 +68,6 @@ export default function Portfolio() {
           message: contactForm.message
         })
       });
-      
       const json = await res.json();
       
       if (json.success) { 
@@ -121,50 +120,39 @@ export default function Portfolio() {
           --blob-1: rgba(45, 212, 191, 0.12); --blob-2: rgba(251, 146, 60, 0.1);
           --input-bg: rgba(255,255,255,0.05);
         }
-        
         body { background: var(--bg); color: var(--text-main); transition: 0.3s; scroll-behavior: smooth; overflow-x: hidden; }
         .bg-blob { position: fixed; border-radius: 50%; filter: blur(100px); z-index: -1; animation: float 15s infinite ease-in-out alternate; }
         .b1 { width: 400px; height: 400px; background: var(--blob-1); top: -100px; left: -100px; }
         .b2 { width: 500px; height: 500px; background: var(--blob-2); bottom: -100px; right: -200px; }
         @keyframes float { 100% { transform: translateY(50px) translateX(50px) scale(1.1); } }
-        
         .page { max-width: 1250px; margin: 0 auto; padding: 20px 24px 60px; position: relative; z-index: 1; }
-        
         nav { position: sticky; top: 20px; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; border: 1px solid var(--card-border); background: var(--card-bg); backdrop-filter: blur(20px); border-radius: 99px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s;}
         .nav-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.95rem; font-weight: 600; padding: 8px 16px; border-radius: 99px; transition: 0.2s; }
         .nav-links a:hover { color: var(--brand); background: var(--brand-glow); }
         .menu-toggle { display: none; background: transparent; border: none; color: var(--text-main); cursor: pointer; }
-        
         .glass-card { background: var(--card-bg); border: 1px solid var(--card-border); backdrop-filter: blur(16px); border-radius: 24px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); transition: 0.3s; }
         .interactive:hover { transform: translateY(-5px); border-color: var(--brand); box-shadow: 0 15px 35px var(--brand-glow); }
-        
         .sec-title { font-family: "Space Grotesk", sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 30px; display: inline-block; }
         .sec-title::after { content: '.'; color: var(--brand); }
         .h1-title { font-family: "Space Grotesk", sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; margin-bottom: 12px; letter-spacing: -1px; }
         .eyebrow-tag { display: inline-block; background: var(--brand-glow); color: var(--brand); font-size: 0.8rem; font-weight: 800; padding: 6px 14px; border-radius: 99px; text-transform: uppercase; margin-bottom: 15px; border: 1px solid rgba(45, 212, 191, 0.2); }
-        
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-        
         .btn-main { background: var(--brand); color: #fff; padding: 14px 28px; border-radius: 12px; border: none; text-decoration: none; font-weight: 700; transition: 0.3s; display: inline-flex; align-items:center; justify-content:center; gap:8px; box-shadow: 0 5px 20px var(--brand-glow); cursor:pointer; font-size:1rem;}
         .btn-main:hover { transform: translateY(-2px); filter: brightness(1.1); }
         .btn-outline { background: transparent; border: 2px solid var(--card-border); color: var(--text-main); padding: 12px 28px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; display: inline-flex; align-items:center; justify-content:center; cursor: pointer; font-size:1rem;}
         .btn-outline:hover { border-color: var(--brand); background: var(--brand-glow); color: var(--brand); }
-
+        .btn-resume { background: var(--text-main); color: var(--bg); padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; display: inline-flex; align-items:center; justify-content:center; gap:8px; border: 2px solid transparent; cursor: pointer; font-size:1rem;}
+        .btn-resume:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
         .action-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--brand-glow); color: var(--brand); font-size: 0.8rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: 0.2s; border: 1px solid transparent; }
         .action-link:hover { background: var(--brand); color: #fff; border-color: var(--brand); }
-
         .contact-link { display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text-main); font-weight: 600; padding: 16px; border: 1px solid var(--card-border); background: var(--card-bg); border-radius: 12px; transition: 0.3s; font-size: 0.95rem; }
         .contact-link:hover { background: var(--brand-glow); border-color: var(--brand); color: var(--brand); transform: translateX(5px); }
-
         .chip { padding: 6px 14px; border-radius: 12px; font-size: 0.85rem; font-weight: 600; background: var(--brand-glow); color: var(--brand); border: 1px solid rgba(45, 212, 191, 0.2); display: inline-block; }
-        
         .form-input { width: 100%; padding: 16px; background: var(--input-bg); border: 1px solid var(--card-border); color: var(--text-main); border-radius: 12px; font-family: inherit; font-size: 1rem; margin-bottom: 15px; outline: none; transition: 0.2s; }
         .form-input:focus { border-color: var(--brand); box-shadow: 0 0 0 4px var(--brand-glow); }
-
         .hero-header { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
-        
         @media (max-width: 980px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } .hero-grid { grid-template-columns: 1fr !important; } }
         @media (max-width: 760px) {
           .nav-links { display: none; width: 100%; flex-direction: column; padding-top: 15px; margin-top: 15px; border-top: 1px solid var(--card-border); }
@@ -173,7 +161,7 @@ export default function Portfolio() {
         }
       `}</style>
 
-      {/* --- HIDDEN LIVE PDF GENERATOR (Exact College LaTeX Template) --- */}
+      {/* --- HIDDEN LIVE PDF GENERATOR --- */}
       <div style={{ position: 'absolute', top: '-10000px', left: '-10000px' }}>
         <div ref={resumeRef} style={{ width: '210mm', minHeight: '297mm', backgroundColor: 'white', padding: '12mm 15mm', color: '#000', fontFamily: "'Times New Roman', Times, serif", textAlign: 'left', lineHeight: '1.25', boxSizing: 'border-box' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px' }}>
@@ -194,43 +182,49 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div style={{ marginBottom: '12px' }}>
-            <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '4px' }}>Education</div>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', fontSize: '10pt' }}>
-              <thead><tr><th style={{ border: '1px solid black', padding: '3px' }}>Degree/Certificate</th><th style={{ border: '1px solid black', padding: '3px' }}>Institute/Board</th><th style={{ border: '1px solid black', padding: '3px' }}>CGPA/Percentage</th><th style={{ border: '1px solid black', padding: '3px' }}>Year</th></tr></thead>
-              <tbody>
-                {data.education.sort((a, b) => parseInt(b.duration.split('-')[0]) > parseInt(a.duration.split('-')[0]) ? 1 : -1).map(edu => (
-                  <tr key={edu._id}><td style={{ border: '1px solid black', padding: '3px', fontWeight: edu.degree.includes('Tech') ? 'bold' : 'normal' }}>{edu.docUrl ? <a href={edu.docUrl} target="_blank" style={{color:'black', textDecoration:'underline'}}>{edu.degree}</a> : edu.degree}</td><td style={{ border: '1px solid black', padding: '3px' }}>{edu.institute}</td><td style={{ border: '1px solid black', padding: '3px' }}>{edu.grade}</td><td style={{ border: '1px solid black', padding: '3px' }}>{edu.duration}</td></tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          {data.education?.length > 0 && (
+            <div style={{ marginBottom: '12px' }}>
+              <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '4px' }}>Education</div>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', fontSize: '10pt' }}>
+                <thead><tr><th style={{ border: '1px solid black', padding: '3px' }}>Degree/Certificate</th><th style={{ border: '1px solid black', padding: '3px' }}>Institute/Board</th><th style={{ border: '1px solid black', padding: '3px' }}>CGPA/Percentage</th><th style={{ border: '1px solid black', padding: '3px' }}>Year</th></tr></thead>
+                <tbody>
+                  {data.education.sort((a, b) => parseInt(b.duration.split('-')[0]) > parseInt(a.duration.split('-')[0]) ? 1 : -1).map(edu => (
+                    <tr key={edu._id}><td style={{ border: '1px solid black', padding: '3px', fontWeight: edu.degree.includes('Tech') ? 'bold' : 'normal' }}>{edu.docUrl ? <a href={edu.docUrl} target="_blank" style={{color:'black', textDecoration:'underline'}}>{edu.degree}</a> : edu.degree}</td><td style={{ border: '1px solid black', padding: '3px' }}>{edu.institute}</td><td style={{ border: '1px solid black', padding: '3px' }}>{edu.grade}</td><td style={{ border: '1px solid black', padding: '3px' }}>{edu.duration}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
 
-          <div style={{ marginBottom: '12px' }}>
-            <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Experience</div>
-            {data.experience.sort((a, b) => parseDate(b.durationMeta) - parseDate(a.durationMeta)).map(exp => {
-              const splitMeta = exp.durationMeta?.split('|') || [exp.durationMeta]; const dateText = splitMeta[1]?.trim() || exp.durationMeta; const locText = splitMeta[0]?.trim() || '';
-              return (
-              <div key={exp._id} style={{ marginBottom: '8px', fontSize: '10.5pt' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}><span style={{ fontWeight: 'bold' }}>• {exp.company}</span><span style={{ fontStyle: 'italic', fontSize: '10pt' }}>{dateText}</span></div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3px', paddingLeft: '10px' }}><span style={{ fontStyle: 'italic' }}>{exp.role}</span><span style={{ fontStyle: 'italic', fontSize: '10pt' }}>{locText}</span></div>
-                <ul style={{ margin: 0, paddingLeft: '10px', fontSize: '10pt', listStyleType: 'none' }}>{exp.bullets.map((b, i) => <li key={i} style={{ marginBottom: '2px', display: 'flex', alignItems: 'flex-start', gap: '6px' }}><span style={{ fontWeight: 'normal' }}>–</span><span>{b}</span></li>)}</ul>
-              </div>
-            )})}
-          </div>
-
-          <div style={{ marginBottom: '12px' }}>
-            <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Projects</div>
-            {data.projects.sort((a, b) => parseInt(b.year) - parseInt(a.year)).map(proj => (
-              <div key={proj._id} style={{ marginBottom: '8px', fontSize: '10.5pt' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontWeight: 'bold' }}>• {proj.title}</span><span style={{ fontStyle: 'italic', fontSize: '10pt' }}>{proj.year}</span></div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px', paddingLeft: '10px' }}>
-                  <span style={{ fontStyle: 'italic' }}>{proj.technologies.join(', ')}</span><span style={{ fontStyle: 'italic', fontSize: '10pt' }}>{proj.githubUrl ? <a href={proj.githubUrl} target="_blank" style={{color:'black', textDecoration:'underline'}}>Github</a> : 'Github'}</span>
+          {data.experience?.length > 0 && (
+            <div style={{ marginBottom: '12px' }}>
+              <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Experience</div>
+              {data.experience.sort((a, b) => parseDate(b.durationMeta) - parseDate(a.durationMeta)).map(exp => {
+                const splitMeta = exp.durationMeta?.split('|') || [exp.durationMeta]; const dateText = splitMeta[1]?.trim() || exp.durationMeta; const locText = splitMeta[0]?.trim() || '';
+                return (
+                <div key={exp._id} style={{ marginBottom: '8px', fontSize: '10.5pt' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}><span style={{ fontWeight: 'bold' }}>• {exp.company}</span><span style={{ fontStyle: 'italic', fontSize: '10pt' }}>{dateText}</span></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3px', paddingLeft: '10px' }}><span style={{ fontStyle: 'italic' }}>{exp.role}</span><span style={{ fontStyle: 'italic', fontSize: '10pt' }}>{locText}</span></div>
+                  <ul style={{ margin: 0, paddingLeft: '10px', fontSize: '10pt', listStyleType: 'none' }}>{exp.bullets.map((b, i) => <li key={i} style={{ marginBottom: '2px', display: 'flex', alignItems: 'flex-start', gap: '6px' }}><span style={{ fontWeight: 'normal' }}>–</span><span>{b}</span></li>)}</ul>
                 </div>
-                <div style={{ fontSize: '10pt', paddingLeft: '10px' }}>– {proj.description}</div>
-              </div>
-            ))}
-          </div>
+              )})}
+            </div>
+          )}
+
+          {data.projects?.length > 0 && (
+            <div style={{ marginBottom: '12px' }}>
+              <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Projects</div>
+              {data.projects.sort((a, b) => parseInt(b.year) - parseInt(a.year)).map(proj => (
+                <div key={proj._id} style={{ marginBottom: '8px', fontSize: '10.5pt' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontWeight: 'bold' }}>• {proj.title}</span><span style={{ fontStyle: 'italic', fontSize: '10pt' }}>{proj.year}</span></div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px', paddingLeft: '10px' }}>
+                    <span style={{ fontStyle: 'italic' }}>{proj.technologies.join(', ')}</span><span style={{ fontStyle: 'italic', fontSize: '10pt' }}>{proj.githubUrl ? <a href={proj.githubUrl} target="_blank" style={{color:'black', textDecoration:'underline'}}>Github</a> : 'Github'}</span>
+                  </div>
+                  <div style={{ fontSize: '10pt', paddingLeft: '10px' }}>– {proj.description}</div>
+                </div>
+              ))}
+            </div>
+          )}
 
           {data.certifications?.length > 0 && (
             <div style={{ marginBottom: '12px' }}>
@@ -245,36 +239,43 @@ export default function Portfolio() {
             </div>
           )}
 
-          <div style={{ marginBottom: '12px' }}>
-            <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Technical Skills</div>
-            <div style={{ fontSize: '10pt', lineHeight: '1.5' }}>
-              {data.skills.map(skill => (
-                <span key={skill._id} style={{ display: 'inline-block', marginRight: '24px', marginBottom: '4px' }}><span style={{ fontWeight: 'bold' }}>• {skill.category}:</span> {skill.items.join(', ')}</span>
-              ))}
+          {data.skills?.length > 0 && (
+            <div style={{ marginBottom: '12px' }}>
+              <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Technical Skills</div>
+              <div style={{ fontSize: '10pt', lineHeight: '1.5' }}>
+                {data.skills.map(skill => (
+                  <span key={skill._id} style={{ display: 'inline-block', marginRight: '24px', marginBottom: '4px' }}><span style={{ fontWeight: 'bold' }}>• {skill.category}:</span> {skill.items.join(', ')}</span>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div style={{ marginBottom: '12px' }}>
-            <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Achievements</div>
-            <ul style={{ margin: 0, paddingLeft: '15px', fontSize: '10.5pt' }}>
-              {data.achievements.sort((a, b) => parseInt(b.year) - parseInt(a.year)).map(ach => (
-                <li key={ach._id} style={{marginBottom: '2px', listStyleType: 'disc'}}><span style={{ fontWeight: 'bold' }}>{ach.title}</span> ({ach.year}) - {ach.description}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Key Courses Taken</div>
-            <div style={{ fontSize: '10pt' }}>{data.courses.map(c=>c.name).join(', ')}</div>
-          </div>
+          {data.achievements?.length > 0 && (
+            <div style={{ marginBottom: '12px' }}>
+              <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Achievements</div>
+              <ul style={{ margin: 0, paddingLeft: '15px', fontSize: '10.5pt' }}>
+                {data.achievements.sort((a,b) => parseInt(b.year) - parseInt(a.year)).map(ach => (
+                  <li key={ach._id} style={{marginBottom: '2px', listStyleType: 'disc'}}><span style={{ fontWeight: 'bold' }}>{ach.title}</span> ({ach.year}) - {ach.description}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {data.courses?.length > 0 && (
+            <div>
+              <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Key Courses Taken</div>
+              <div style={{ fontSize: '10pt' }}>{data.courses.map(c=>c.name).join(', ')}</div>
+            </div>
+          )}
         </div>
       </div>
 
 
+      {/* === PUBLIC VISIBLE UI === */}
       <div className="bg-blob b1"></div>
       <div className="bg-blob b2"></div>
 
       <div className="page">
-        {/* === NAVIGATION === */}
         <nav>
           <div style={{ fontFamily: 'Space Grotesk', fontWeight: 'bold', fontSize: '1.2rem', color: 'var(--brand)' }}>AK <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>/</span> PORTFOLIO</div>
           <div className={`nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
@@ -285,7 +286,6 @@ export default function Portfolio() {
           <button className="menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>{isMobileMenuOpen ? <X /> : <Menu />}</button>
         </nav>
 
-        {/* === HERO SECTION === */}
         <motion.section className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '20px', marginTop: '40px' }} initial="hidden" animate="visible" variants={staggerContainer}>
           <motion.div variants={fadeInUp} className="glass-card" style={{ position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(135deg, var(--brand-glow) 0%, transparent 60%)', opacity: 0.5, zIndex: -1 }}></div>
@@ -297,18 +297,14 @@ export default function Portfolio() {
             <div style={{ display: 'flex', flexWrap:'wrap', gap: '15px', marginTop: '30px' }}>
               <a href="#projects" className="btn-main">View Work</a>
               <a href="#contact" className="btn-outline">Let's Talk</a>
-              {/* LIVE DATABASE PDF BUTTON! */}
-              <button onClick={handleDownloadLivePdf} className="btn-outline" style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'var(--text-main)', color: 'var(--bg)', border: 'none' }}><FileText size={18}/> See Live Resume</button>
+              <button onClick={handleDownloadLivePdf} className="btn-resume"><FileText size={18}/> Download Resume</button>
             </div>
           </motion.div>
 
           <motion.div variants={fadeInUp} className="glass-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '20px' }}>
             <div style={{ background: 'var(--input-bg)', padding: '16px', borderRadius: '16px', border: '1px solid var(--card-border)' }}><span style={{ fontSize: '0.8rem', color: 'var(--brand)', textTransform: 'uppercase', fontWeight: 800 }}>Program</span><p style={{ fontWeight: '600', marginTop: '4px' }}>{p.currentProgram}</p></div>
             <div style={{ background: 'var(--input-bg)', padding: '16px', borderRadius: '16px', border: '1px solid var(--card-border)' }}><span style={{ fontSize: '0.8rem', color: 'var(--brand)', textTransform: 'uppercase', fontWeight: 800 }}>Specialization</span><p style={{ fontWeight: '600', marginTop: '4px' }}>{p.specialization}</p></div>
-              <div style={{ background: 'var(--input-bg)', padding: '16px', borderRadius: '16px', border: '1px solid var(--card-border)' }}>
-              <span style={{ fontSize: '0.8rem', color: 'var(--brand)', textTransform: 'uppercase', fontWeight: 800 }}>Contact</span>
-              <p style={{ fontWeight: '600', marginTop: '4px', fontSize: '0.9rem' }}>{p.phone} <br/> {p.emailPersonal}</p>
-            </div>
+            <div style={{ background: 'var(--input-bg)', padding: '16px', borderRadius: '16px', border: '1px solid var(--card-border)' }}><span style={{ fontSize: '0.8rem', color: 'var(--brand)', textTransform: 'uppercase', fontWeight: 800 }}>Contact</span><p style={{ fontWeight: '600', marginTop: '4px', fontSize: '0.9rem' }}>{p.phone} <br/> {p.emailPersonal}</p></div>
             <div style={{ display: 'flex', gap: '10px' }}>
               <a href={p.github} target="_blank" className="btn-outline" style={{ flex: 1, padding: '12px', gap: '8px', fontSize: '0.9rem' }}><GithubIcon size={18}/> GitHub</a>
               <a href={p.linkedin} target="_blank" className="btn-main" style={{ flex: 1, padding: '12px', background: '#0077b5', boxShadow: 'none', gap: '8px', fontSize: '0.9rem' }}><LinkedinIcon size={18}/> LinkedIn</a>
@@ -316,112 +312,123 @@ export default function Portfolio() {
           </motion.div>
         </motion.section>
         
-        {/* === ABOUT === */}
-        <motion.section id="about" style={{ marginTop: '80px' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}>
-          <h3 className="sec-title">About Me</h3>
-          <div className="glass-card" style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '1.05rem' }}>{p.aboutText && p.aboutText.split('\n').filter(t => t.trim() !== '').map((para, i) => <p key={i} style={{ marginBottom: '15px' }}>{para}</p>)}</div>
-        </motion.section>
+        {p.aboutText && (
+          <motion.section id="about" style={{ marginTop: '80px' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}>
+            <h3 className="sec-title">About Me</h3>
+            <div className="glass-card" style={{ color: 'var(--text-muted)', lineHeight: '1.8', fontSize: '1.05rem' }}>{p.aboutText.split('\n').filter(t => t.trim() !== '').map((para, i) => <p key={i} style={{ marginBottom: '15px' }}>{para}</p>)}</div>
+          </motion.section>
+        )}
 
-        {/* === EXPERIENCE === */}
-        <motion.section id="experience" style={{ marginTop: '80px' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}>
-          <h3 className="sec-title">Experience</h3>
-          <div className="grid-2">
-            {data.experience.sort((a,b) => parseDate(b.durationMeta) - parseDate(a.durationMeta)).map(exp => (
-              <div key={exp._id} className="glass-card interactive">
-                <h4 style={{ fontFamily: 'Space Grotesk', fontSize: '1.3rem', marginBottom: '5px' }}>{exp.role}</h4>
-                <p style={{ color: 'var(--brand)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '15px' }}>{exp.company} &bull; {exp.durationMeta}</p>
-                <ul style={{ paddingLeft: '20px', color: 'var(--text-muted)', lineHeight: '1.6', fontSize: '0.95rem' }}>{exp.bullets.map((b, i) => <li key={i} style={{ marginBottom: '6px' }}>{b}</li>)}</ul>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* === PROJECTS WITH GITHUB ACTION CHIP === */}
-        <motion.section id="projects" style={{ marginTop: '80px' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}>
-          <h3 className="sec-title">Featured Projects</h3>
-          <div className="grid-3">
-            {data.projects.sort((a,b) => parseInt(b.year) - parseInt(a.year)).map(proj => (
-              <motion.div variants={fadeInUp} key={proj._id} className="glass-card interactive">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
-                  <span className="eyebrow-tag" style={{ margin: 0, padding: '4px 10px', fontSize: '0.75rem' }}>{proj.year}</span>
-                  {/* Clickable GitHub Chip */}
-                  {proj.githubUrl && <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className="action-link"><GithubIcon size={14}/> Code</a>}
+        {data.experience?.length > 0 && (
+          <motion.section id="experience" style={{ marginTop: '80px' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}>
+            <h3 className="sec-title">Experience</h3>
+            <div className="grid-2">
+              {data.experience.sort((a,b) => parseDate(b.durationMeta) - parseDate(a.durationMeta)).map(exp => (
+                <div key={exp._id} className="glass-card interactive">
+                  <h4 style={{ fontFamily: 'Space Grotesk', fontSize: '1.3rem', marginBottom: '5px' }}>{exp.role}</h4>
+                  <p style={{ color: 'var(--brand)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '15px' }}>{exp.company} &bull; {exp.durationMeta}</p>
+                  <ul style={{ paddingLeft: '20px', color: 'var(--text-muted)', lineHeight: '1.6', fontSize: '0.95rem' }}>{exp.bullets.map((b, i) => <li key={i} style={{ marginBottom: '6px' }}>{b}</li>)}</ul>
                 </div>
-                <h4 style={{ fontFamily: 'Space Grotesk', fontSize: '1.3rem', marginBottom: '10px' }}>{proj.title}</h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '20px', lineHeight: '1.6' }}>{proj.description}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>{proj.technologies.map(t => <span key={t} className="chip">{t}</span>)}</div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* === SKILLS === */}
-        <motion.section id="skills" style={{ marginTop: '80px' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}>
-          <h3 className="sec-title">Technical Arsenal</h3>
-          <div className="grid-2">
-            {data.skills.map(skill => (
-              <div key={skill._id} className="glass-card interactive" style={{ padding: '24px' }}>
-                <h4 style={{ fontFamily: 'Space Grotesk', fontSize: '1.1rem', marginBottom: '15px' }}>{skill.category}</h4>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>{skill.items.map(t => <span key={t} className="chip" style={{ background: 'transparent' }}>{t}</span>)}</div>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* === EDUCATION & CERTIFICATIONS WITH ACTION CHIPS === */}
-        <motion.section id="education" style={{ marginTop: '80px' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}>
-          <div className="grid-2">
-            <div>
-              <h3 className="sec-title">Academic Background</h3>
-              <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                {data.education.sort((a,b) => parseInt(b.duration.split('-')[0]) > parseInt(a.duration.split('-')[0]) ? 1 : -1).map(edu => (
-                  <div key={edu._id} style={{ borderBottom: '1px solid var(--card-border)', paddingBottom: '15px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                      <h4 style={{ fontSize: '1.1rem', fontWeight: 800 }}>{edu.degree}</h4>
-                      <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textAlign: 'right' }}>{edu.duration}<br/>{edu.grade && <span style={{ color: 'var(--brand)', fontWeight: 'bold' }}>{edu.grade}</span>}</span>
-                    </div>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginTop: '5px', marginBottom: '10px' }}>{edu.institute}</p>
-                    {/* Clickable Marksheet Chip */}
-                    {edu.docUrl && <a href={edu.docUrl} target="_blank" rel="noopener noreferrer" className="action-link"><FileText size={14}/> View Marksheet</a>}
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
-            <div>
-              {data.certifications?.length > 0 && (
-                <>
-                  <h3 className="sec-title">Certifications</h3>
-                  <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '20px' }}>
-                    {data.certifications.sort((a,b) => parseInt(b.year) - parseInt(a.year)).map(cert => (
-                      <div key={cert._id} style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', borderBottom: '1px solid var(--card-border)', paddingBottom: '12px' }}>
-                        <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--brand)', marginTop: '6px' }}></div>
-                        <div style={{ flex: 1 }}>
-                          <strong style={{ display: 'block', fontSize: '1.05rem', marginBottom: '2px' }}>{cert.title}</strong>
-                          <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', display: 'block', marginBottom: '8px' }}>{cert.issuer} ({cert.year})</span>
-                          {/* Clickable Certificate Chip */}
-                          {cert.link && <a href={cert.link} target="_blank" rel="noopener noreferrer" className="action-link"><Award size={14}/> Verify Credential</a>}
-                        </div>
+          </motion.section>
+        )}
+
+        {data.projects?.length > 0 && (
+          <motion.section id="projects" style={{ marginTop: '80px' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}>
+            <h3 className="sec-title">Featured Projects</h3>
+            <div className="grid-3">
+              {data.projects.sort((a,b) => parseInt(b.year) - parseInt(a.year)).map(proj => (
+                <motion.div variants={fadeInUp} key={proj._id} className="glass-card interactive">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px' }}>
+                    <span className="eyebrow-tag" style={{ margin: 0, padding: '4px 10px', fontSize: '0.75rem' }}>{proj.year}</span>
+                    {proj.githubUrl && <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className="action-link"><GithubIcon size={14}/> Code</a>}
+                  </div>
+                  <h4 style={{ fontFamily: 'Space Grotesk', fontSize: '1.3rem', marginBottom: '10px' }}>{proj.title}</h4>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '20px', lineHeight: '1.6' }}>{proj.description}</p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>{proj.technologies.map(t => <span key={t} className="chip">{t}</span>)}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+        )}
+
+        {data.skills?.length > 0 && (
+          <motion.section id="skills" style={{ marginTop: '80px' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}>
+            <h3 className="sec-title">Technical Arsenal</h3>
+            <div className="grid-2">
+              {data.skills.map(skill => (
+                <div key={skill._id} className="glass-card interactive" style={{ padding: '24px' }}>
+                  <h4 style={{ fontFamily: 'Space Grotesk', fontSize: '1.1rem', marginBottom: '15px' }}>{skill.category}</h4>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>{skill.items.map(t => <span key={t} className="chip" style={{ background: 'transparent' }}>{t}</span>)}</div>
+                </div>
+              ))}
+            </div>
+          </motion.section>
+        )}
+
+        {data.education?.length > 0 && (
+          <motion.section id="education" style={{ marginTop: '80px' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeInUp}>
+            <div className="grid-2">
+              <div>
+                <h3 className="sec-title">Academic Background</h3>
+                <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  {data.education.sort((a,b) => parseInt(b.duration.split('-')[0]) > parseInt(a.duration.split('-')[0]) ? 1 : -1).map(edu => (
+                    <div key={edu._id} style={{ borderBottom: '1px solid var(--card-border)', paddingBottom: '15px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <h4 style={{ fontSize: '1.1rem', fontWeight: 800 }}>{edu.degree}</h4>
+                        <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textAlign: 'right' }}>{edu.duration}<br/>{edu.grade && <span style={{ color: 'var(--brand)', fontWeight: 'bold' }}>{edu.grade}</span>}</span>
                       </div>
-                    ))}
-                  </div>
-                </>
-              )}
-
-              <h3 className="sec-title" style={{ fontSize: '1.4rem' }}>Achievements</h3>
-              <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '20px' }}>
-                {data.achievements.sort((a, b) => parseInt(b.year) - parseInt(a.year)).map(ach => (
-                  <div key={ach._id} style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--accent)' }}></div>
-                    <div style={{ flex: 1 }}><strong style={{ display: 'block', fontSize: '1.05rem' }}>{ach.title}</strong><span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{ach.description}</span></div>
-                    <span style={{ color: 'var(--brand)', fontWeight: 800, fontSize: '0.9rem' }}>{ach.year}</span>
-                  </div>
-                ))}
+                      <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginTop: '5px', marginBottom: '10px' }}>{edu.institute}</p>
+                      {edu.docUrl && <a href={edu.docUrl} target="_blank" rel="noopener noreferrer" className="action-link"><FileText size={14}/> View Marksheet</a>}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <h3 className="sec-title" style={{ marginTop: '20px', fontSize: '1.4rem' }}>Coursework</h3>
-              <div className="glass-card"><div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>{data.courses.map(c => <span key={c._id} className="chip">{c.name}</span>)}</div></div>
+              <div>
+                {data.certifications?.length > 0 && (
+                  <>
+                    <h3 className="sec-title">Certifications</h3>
+                    <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '20px' }}>
+                      {data.certifications.sort((a,b) => parseInt(b.year) - parseInt(a.year)).map(cert => (
+                        <div key={cert._id} style={{ display: 'flex', alignItems: 'flex-start', gap: '15px', borderBottom: '1px solid var(--card-border)', paddingBottom: '12px' }}>
+                          <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--brand)', marginTop: '6px' }}></div>
+                          <div style={{ flex: 1 }}>
+                            <strong style={{ display: 'block', fontSize: '1.05rem', marginBottom: '2px' }}>{cert.title}</strong>
+                            <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', display: 'block', marginBottom: '8px' }}>{cert.issuer} ({cert.year})</span>
+                            {cert.link && <a href={cert.link} target="_blank" rel="noopener noreferrer" className="action-link"><Award size={14}/> Verify Credential</a>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+
+                {data.achievements?.length > 0 && (
+                  <>
+                    <h3 className="sec-title" style={{ fontSize: '1.4rem' }}>Achievements</h3>
+                    <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '20px' }}>
+                      {data.achievements.sort((a,b) => parseInt(b.year) - parseInt(a.year)).map(ach => (
+                        <div key={ach._id} style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                          <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--accent)' }}></div>
+                          <div style={{ flex: 1 }}><strong style={{ display: 'block', fontSize: '1.05rem' }}>{ach.title}</strong><span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{ach.description}</span></div>
+                          <span style={{ color: 'var(--brand)', fontWeight: 800, fontSize: '0.9rem' }}>{ach.year}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+                
+                {data.courses?.length > 0 && (
+                  <>
+                    <h3 className="sec-title" style={{ marginTop: '20px', fontSize: '1.4rem' }}>Coursework</h3>
+                    <div className="glass-card"><div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>{data.courses.map(c => <span key={c._id} className="chip">{c.name}</span>)}</div></div>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-        </motion.section>
+          </motion.section>
+        )}
 
         {/* === CONTACT + LIVE SMTP MESSAGE SYSTEM === */}
         <motion.section id="contact" style={{ margin: '100px 0 80px' }} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
