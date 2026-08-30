@@ -257,7 +257,7 @@ export default function Portfolio() {
           <div style={{ marginBottom: '12px' }}>
             <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Achievements</div>
             <ul style={{ margin: 0, paddingLeft: '15px', fontSize: '10.5pt' }}>
-              {data.achievements.map(ach => (
+              {data.achievements.sort((a, b) => parseInt(b.year) - parseInt(a.year)).map(ach => (
                 <li key={ach._id} style={{marginBottom: '2px', listStyleType: 'disc'}}><span style={{ fontWeight: 'bold' }}>{ach.title}</span> ({ach.year}) - {ach.description}</li>
               ))}
             </ul>
@@ -409,7 +409,7 @@ export default function Portfolio() {
 
               <h3 className="sec-title" style={{ fontSize: '1.4rem' }}>Achievements</h3>
               <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '20px' }}>
-                {data.achievements.map(ach => (
+                {data.achievements.sort((a, b) => parseInt(b.year) - parseInt(a.year)).map(ach => (
                   <div key={ach._id} style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                     <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--accent)' }}></div>
                     <div style={{ flex: 1 }}><strong style={{ display: 'block', fontSize: '1.05rem' }}>{ach.title}</strong><span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{ach.description}</span></div>
@@ -447,7 +447,7 @@ export default function Portfolio() {
         </motion.section>
 
         <footer style={{ textAlign: 'center', color: 'var(--text-muted)', borderTop: '1px solid var(--card-border)', paddingTop: '30px' }}>
-          <p style={{ fontWeight: 600 }}>Designed dynamically using the MERN Stack by Azim</p>
+          <p style={{ fontWeight: 600 }}>Designed by Azim</p>
           <p style={{ fontSize: '0.85rem' }}>&copy; {new Date().getFullYear()} All rights reserved. <a href="/admin" style={{ color: 'var(--brand)', textDecoration: 'none' }}>Workspace Access</a></p>
         </footer>
 

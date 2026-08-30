@@ -31,6 +31,18 @@ export default function AdminDashboard({ setAuth }) {
     builderLeft: isDark ? '#1e293b' : 'white', builderRight: isDark ? '#020617' : '#cbd5e1'
   };
 
+  const monthMap = {
+  "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
+  "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12
+};
+
+const parseDate = (dateStr) => {
+  // Matches "Feb 2025" -> month: Feb, year: 2025
+  const match = dateStr.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s?(\d{4})/);
+  if (!match) return 0;
+  return parseInt(match[2]) * 12 + monthMap[match[1]];
+};
+
   useEffect(() => {
     localStorage.setItem('theme', theme);
     if(theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
@@ -228,7 +240,7 @@ export default function AdminDashboard({ setAuth }) {
                 {selected.experience.length > 0 && (
                   <div style={{ marginBottom: '12px' }}>
                     <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Experience</div>
-                    {data.experience.filter(e => selected.experience.includes(e._id)).map(exp => {
+                    {data.experience.filter(e => selected.experience.includes(e._id)).sort((a, b) => parseDate(b.durationMeta) - parseDate(a.durationMeta)).map(exp => {
                       const splitMeta = exp.durationMeta?.split('|') || [exp.durationMeta]; const dateText = splitMeta[1]?.trim() || exp.durationMeta; const locText = splitMeta[0]?.trim() || '';
                       return (
                       <div key={exp._id} style={{ marginBottom: '8px', fontSize: '10.5pt' }}>
@@ -262,7 +274,7 @@ export default function AdminDashboard({ setAuth }) {
                   <div style={{ marginBottom: '12px' }}>
                     <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Professional Certifications</div>
                     <ul style={{ margin: 0, paddingLeft: '15px', fontSize: '10.5pt' }}>
-                      {data.certifications.filter(c => selected.certifications.includes(c._id)).map(cert => (
+                      {data.certifications.filter(c => selected.certifications.includes(c._id)).sort((a, b) => parseInt(b.year) - parseInt(a.year)).map(cert => (
                         <li key={cert._id} style={{marginBottom: '2px', listStyleType: 'disc'}}>
                           <span style={{ fontWeight: 'bold' }}>{cert.link ? <a href={cert.link} target="_blank" style={{color:'black', textDecoration:'underline'}}>{cert.title}</a> : cert.title}</span> – {cert.issuer} ({cert.year})
                         </li>
@@ -286,7 +298,8 @@ export default function AdminDashboard({ setAuth }) {
                   <div style={{ marginBottom: '12px' }}>
                     <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Achievements</div>
                     <ul style={{ margin: 0, paddingLeft: '15px', fontSize: '10.5pt' }}>
-                      {data.achievements.filter(a => selected.achievements.includes(a._id)).map(ach => (
+                      {data.achievements.filter(a => selected.achievements.includes(a._id)).sort((a, b) => parseInt(b.year) - parseInt(a.year))
+                      .map(ach => (
                         <li key={ach._id} style={{marginBottom: '2px', listStyleType: 'disc'}}><span style={{ fontWeight: 'bold' }}>{ach.title}</span> ({ach.year}) - {ach.description}</li>
                       ))}
                     </ul>
