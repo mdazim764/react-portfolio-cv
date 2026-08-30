@@ -219,7 +219,9 @@ export default function AdminDashboard({ setAuth }) {
                     <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'center', fontSize: '10pt' }}>
                       <thead><tr><th style={{ border: '1px solid black', padding: '3px' }}>Degree/Certificate</th><th style={{ border: '1px solid black', padding: '3px' }}>Institute/Board</th><th style={{ border: '1px solid black', padding: '3px' }}>CGPA/Percentage</th><th style={{ border: '1px solid black', padding: '3px' }}>Year</th></tr></thead>
                       <tbody>
-                        {data.education.filter(e => selected.education.includes(e._id)).map(edu => (
+                        {data.education.filter(e => selected.education.includes(e._id))
+                        .sort((a, b) => parseInt(b.duration.split('-')[0]) > parseInt(a.duration.split('-')[0]) ? 1 : -1)
+                        .map(edu => (
                           <tr key={edu._id}><td style={{ border: '1px solid black', padding: '3px', fontWeight: edu.degree.includes('Tech') ? 'bold' : 'normal' }}>{edu.degree}</td><td style={{ border: '1px solid black', padding: '3px' }}>{edu.institute}</td><td style={{ border: '1px solid black', padding: '3px' }}>{edu.grade}</td><td style={{ border: '1px solid black', padding: '3px' }}>{edu.duration}</td></tr>
                         ))}
                       </tbody>
@@ -249,7 +251,7 @@ export default function AdminDashboard({ setAuth }) {
                 {selected.projects.length > 0 && (
                   <div style={{ marginBottom: '12px' }}>
                     <div style={{ textTransform: 'uppercase', fontSize: '11.5pt', fontWeight: 'bold', borderBottom: '1px solid black', paddingBottom: '1px', marginBottom: '5px' }}>Projects</div>
-                    {data.projects.filter(p => selected.projects.includes(p._id)).map(proj => (
+                    {data.projects.filter(p => selected.projects.includes(p._id)).sort((a, b) => parseInt(b.year) - parseInt(a.year)).map(proj => (
                       <div key={proj._id} style={{ marginBottom: '8px', fontSize: '10.5pt' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontWeight: 'bold' }}>• {proj.title}</span><span style={{ fontStyle: 'italic', fontSize: '10pt' }}>{proj.year}</span></div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px', paddingLeft: '10px' }}><span style={{ fontStyle: 'italic' }}>{proj.technologies.join(', ')}</span><span style={{ fontStyle: 'italic', fontSize: '10pt' }}>Github</span></div>
