@@ -251,7 +251,9 @@ export default function Portfolio() {
         <motion.section id="projects" style={{ marginTop: '80px' }} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}>
           <h3 className="sec-title">Featured Projects</h3>
           <div className="grid-3">
-            {data.projects.map(proj => (
+            {data.projects
+            .sort((a, b) => parseInt(b.year) - parseInt(a.year)) // Sort by year
+            .map(proj => (
               <motion.div variants={fadeInUp} key={proj._id} className="glass-card interactive">
                 <span className="eyebrow-tag" style={{ padding: '4px 10px', fontSize: '0.75rem', marginBottom: '15px' }}>{proj.year}</span>
                 <h4 style={{ fontFamily: 'Space Grotesk', fontSize: '1.3rem', marginBottom: '10px' }}>{proj.title}</h4>
@@ -283,7 +285,9 @@ export default function Portfolio() {
             <div>
               <h3 className="sec-title">Academic Background</h3>
               <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                {data.education.map(edu => (
+                {data.education
+                .sort((a, b) => parseInt(b.duration.split('-')[0]) > parseInt(a.duration.split('-')[0]) ? 1 : -1)
+                .map(edu => (
                   <div key={edu._id} style={{ borderBottom: '1px solid var(--card-border)', paddingBottom: '15px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                       <h4 style={{ fontSize: '1.1rem', fontWeight: 800 }}>{edu.degree}</h4>
