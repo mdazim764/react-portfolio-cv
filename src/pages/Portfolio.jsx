@@ -83,9 +83,10 @@ export default function Portfolio() {
     setIsSending(false);
   };
 
-  const handleDownloadLivePdf = useReactToPrint({ 
-    contentRef: resumeRef, documentTitle: 'Azim_Khairdi_Resume',
-    pageStyle: `@media print { @page { size: A4; margin: 0; } body { -webkit-print-color-adjust: exact; } a { text-decoration: none; color: black; } }` 
+ const handleDownloadLivePdf = useReactToPrint({ 
+    contentRef: resumeRef, 
+    documentTitle: 'Azim_Khairdi_Resume',
+    pageStyle: `@media print { @page { size: A4; margin: 0; } html, body { background: white !important; height: 100% !important; } body { -webkit-print-color-adjust: exact; } a { text-decoration: none; color: black; } }` 
   });
 
   const fadeInUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
