@@ -114,7 +114,17 @@ const parseDate = (dateStr) => {
 const handleDownloadPdf = useReactToPrint({ 
     contentRef: resumeRef, 
     documentTitle: 'Azim_Khairdi_Resume',
-    pageStyle: `@media print { @page { size: A4; margin: 0; } html, body { background: white !important; height: auto !important; overflow: visible !important; } body { -webkit-print-color-adjust: exact; } a { text-decoration: none; color: black; } }` 
+    pageStyle: `
+      @media print { 
+        @page { size: A4; margin: 15mm !important; } 
+        html, body { background: white !important; height: auto !important; overflow: visible !important; } 
+        body { -webkit-print-color-adjust: exact; } 
+        a { text-decoration: none; color: black; }
+        * { box-shadow: none !important; }
+        /* This removes the UI padding and lets @page handle perfect margins across all pages */
+        div[style*="210mm"] { width: auto !important; min-height: auto !important; padding: 0 !important; margin: 0 !important; }
+      }
+    `
   });
   const toggleSelection = (cat, id) => setSelected(p => ({ ...p, [cat]: p[cat].includes(id) ? p[cat].filter(i => i !== id) : [...p[cat], id] }));
 

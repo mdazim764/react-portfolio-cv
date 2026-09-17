@@ -84,8 +84,19 @@ export default function Portfolio() {
   };
 
 const handleDownloadLivePdf = useReactToPrint({ 
-    contentRef: resumeRef, documentTitle: 'Azim_Khairdi_Resume',
-    pageStyle: `@media print { @page { size: A4; margin: 0; } html, body { background: white !important; height: auto !important; overflow: visible !important; } body { -webkit-print-color-adjust: exact; } a { text-decoration: none; color: black; } }` 
+    contentRef: resumeRef, 
+    documentTitle: 'Azim_Khairdi_Resume',
+    pageStyle: `
+      @media print { 
+        @page { size: A4; margin: 15mm !important; } 
+        html, body { background: white !important; height: auto !important; overflow: visible !important; } 
+        body { -webkit-print-color-adjust: exact; } 
+        a { text-decoration: none; color: black; }
+        * { box-shadow: none !important; }
+        /* This removes the UI padding and lets @page handle perfect margins across all pages */
+        div[style*="210mm"] { width: auto !important; min-height: auto !important; padding: 0 !important; margin: 0 !important; }
+      }
+    ` 
   });
 
   const fadeInUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
