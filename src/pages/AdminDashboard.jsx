@@ -116,12 +116,14 @@ const handleDownloadPdf = useReactToPrint({
     documentTitle: 'Azim_Khairdi_Resume',
     pageStyle: `
       @media print { 
-        @page { size: A4; margin: 0 !important; } /* MAGIC LINE: Kills the URL & Date */
-        html, body { background: white !important; height: auto !important; overflow: visible !important; padding: 15mm !important; box-sizing: border-box; } 
+        /* MAGIC LINE: Gives exact LaTeX margins to EVERY page */
+        @page { size: A4; margin: 12mm 15mm !important; } 
+        html, body { background: white !important; margin: 0 !important; padding: 0 !important; } 
         body { -webkit-print-color-adjust: exact; } 
         a { text-decoration: none; color: black; }
         * { box-shadow: none !important; }
-        div[style*="210mm"] { width: auto !important; min-height: auto !important; padding: 0 !important; margin: 0 !important; }
+        /* Removes screen-padding so margins don't double up! */
+        div[style*="210mm"] { width: 100% !important; min-height: auto !important; padding: 0 !important; margin: 0 !important; }
       }
     `
   });
