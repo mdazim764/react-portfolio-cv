@@ -111,10 +111,10 @@ const parseDate = (dateStr) => {
   };
 
   const handleLogout = () => { localStorage.removeItem('adminToken'); setAuth(false); };
-  const handleDownloadPdf = useReactToPrint({ 
+const handleDownloadPdf = useReactToPrint({ 
     contentRef: resumeRef, 
     documentTitle: 'Azim_Khairdi_Resume',
-    pageStyle: `@media print { @page { size: A4; margin: 0; } html, body { background: white !important; height: 100% !important; } body { -webkit-print-color-adjust: exact; } a { text-decoration: none; color: black; } }`
+    pageStyle: `@media print { @page { size: A4; margin: 0; } html, body { background: white !important; height: auto !important; overflow: visible !important; } body { -webkit-print-color-adjust: exact; } a { text-decoration: none; color: black; } }`
   });
   const toggleSelection = (cat, id) => setSelected(p => ({ ...p, [cat]: p[cat].includes(id) ? p[cat].filter(i => i !== id) : [...p[cat], id] }));
 
