@@ -88,7 +88,7 @@ const handleDownloadLivePdf = useReactToPrint({
     pageStyle: `
       @media print { 
         @page { size: A4; margin: 0 !important; } /* MAGIC LINE: Kills the URL & Date */
-        html, body { background: white !important; height: auto !important; overflow: visible !important; padding: 10mm !important; box-sizing: border-box; } 
+        html, body { background: white !important; height: auto !important; overflow: visible !important; padding: 15mm !important; box-sizing: border-box; } 
         body { -webkit-print-color-adjust: exact; } 
         a { text-decoration: none; color: black; }
         * { box-shadow: none !important; }
